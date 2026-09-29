@@ -1,5 +1,7 @@
 package ufes.especificacao_mvp.view;
 
+import javax.swing.JMenuItem;
+
 public class TelaPrincipal extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TelaPrincipal.class.getName());
@@ -7,42 +9,59 @@ public class TelaPrincipal extends javax.swing.JFrame {
    
     public TelaPrincipal() {
         initComponents();
+        this.setLocationRelativeTo(null);
+    }
+    
+    public JMenuItem getMiIncluirProduto() {
+        return miIncluirProduto;
     }
 
+    public JMenuItem getMiBuscarProdutos() {
+        return miBuscarProdutos;
+    }
+
+    public JMenuItem getMiCategorias() {
+        return miCategorias;
+    }
+
+    public JMenuItem getMiCalculoMargem() {
+        return miCalculoMargem;
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        BarraMenu = new javax.swing.JMenuBar();
-        menuDados = new javax.swing.JMenu();
-        itemIncluirProdutos = new javax.swing.JMenuItem();
-        itemBuscarProdutos = new javax.swing.JMenuItem();
-        itemCategorias = new javax.swing.JMenuItem();
-        itemCalcularMargem = new javax.swing.JMenuItem();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        JMenuItem = new javax.swing.JMenu();
+        miIncluirProduto = new javax.swing.JMenuItem();
+        miBuscarProdutos = new javax.swing.JMenuItem();
+        miCategorias = new javax.swing.JMenuItem();
+        miCalculoMargem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Supermercado");
 
-        BarraMenu.setToolTipText("");
+        jMenuBar1.setToolTipText("");
 
-        menuDados.setText("Dados");
+        JMenuItem.setText("Dados");
 
-        itemIncluirProdutos.setText("Incluir produtos");
-        menuDados.add(itemIncluirProdutos);
+        miIncluirProduto.setText("Incluir produtos");
+        JMenuItem.add(miIncluirProduto);
 
-        itemBuscarProdutos.setText("Buscar produtos");
-        menuDados.add(itemBuscarProdutos);
+        miBuscarProdutos.setText("Buscar produtos");
+        JMenuItem.add(miBuscarProdutos);
 
-        itemCategorias.setText("Categorias");
-        menuDados.add(itemCategorias);
+        miCategorias.setText("Categorias");
+        JMenuItem.add(miCategorias);
 
-        itemCalcularMargem.setText("Calcular margem de lucro");
-        menuDados.add(itemCalcularMargem);
+        miCalculoMargem.setText("Calcular margem de lucro");
+        JMenuItem.add(miCalculoMargem);
 
-        BarraMenu.add(menuDados);
+        jMenuBar1.add(JMenuItem);
 
-        setJMenuBar(BarraMenu);
-        BarraMenu.getAccessibleContext().setAccessibleName("");
+        setJMenuBar(jMenuBar1);
+        jMenuBar1.getAccessibleContext().setAccessibleName("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -58,37 +77,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new TelaPrincipal().setVisible(true));
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuBar BarraMenu;
-    private javax.swing.JMenuItem itemBuscarProdutos;
-    private javax.swing.JMenuItem itemCalcularMargem;
-    private javax.swing.JMenuItem itemCategorias;
-    private javax.swing.JMenuItem itemIncluirProdutos;
-    private javax.swing.JMenu menuDados;
+    private javax.swing.JMenu JMenuItem;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem miBuscarProdutos;
+    private javax.swing.JMenuItem miCalculoMargem;
+    private javax.swing.JMenuItem miCategorias;
+    private javax.swing.JMenuItem miIncluirProduto;
     // End of variables declaration//GEN-END:variables
 }
