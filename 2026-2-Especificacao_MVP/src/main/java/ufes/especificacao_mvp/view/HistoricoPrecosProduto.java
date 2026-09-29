@@ -17,6 +17,7 @@ public class HistoricoPrecosProduto extends javax.swing.JFrame {
      */
     public HistoricoPrecosProduto() {
         initComponents();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -160,6 +161,11 @@ public class HistoricoPrecosProduto extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new HistoricoPrecosProduto().setVisible(true));
     }
+
+    public javax.swing.JButton getJButton1() { return jButton1; }
+    public javax.swing.JTextField getJTextField1() { return jTextField1; }
+    public javax.swing.JTextField getJTextField2() { return jTextField2; }
+    public javax.swing.JTable getJTable1() { return jTable1; }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

@@ -1,103 +1,38 @@
 package ufes.especificacao_mvp.presenter;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JOptionPane;
-import ufes.especificacao_mvp.view.BuscaProdutos;
-import ufes.especificacao_mvp.view.CalculoMargemLucro;
-import ufes.especificacao_mvp.view.CategoriaProdutos;
-import ufes.especificacao_mvp.view.ProdutoInclusaoEdicao;
-import ufes.especificacao_mvp.view.TelaPrincipal;
+import ufes.especificacao_mvp.servico.ProdutoService;
+import ufes.especificacao_mvp.view.*;
 
 public class TelaPrincipalPresenter {
-    
+    static String numero(double valor) {
+        return String.format(java.util.Locale.forLanguageTag("pt-BR"), "%.2f", valor);
+    }
+
+    static double lerNumero(String texto, String campo) {
+        try {
+            return Double.parseDouble(texto.trim().replace(',', '.'));
+        } catch (NullPointerException | NumberFormatException ex) {
+            throw new IllegalArgumentException("Informe um número válido para " + campo + ".");
+        }
+    }
     private final TelaPrincipal view;
+    private final ProdutoService produtos;
 
-    public TelaPrincipalPresenter(TelaPrincipal view) {
+    public TelaPrincipalPresenter(TelaPrincipal view, ProdutoService produtos) {
         this.view = view;
-        this.initListeners();
-    }
-
-    private void initListeners() {
-        this.view.getMiIncluirProduto().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                abrirInclusaoProduto();
-            }
-        });
-
-        this.view.getMiBuscarProdutos().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                abrirBuscaProdutos();
-            }
-        });
-
-        this.view.getMiCategorias().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                abrirCategorias();
-            }
-        });
-
-        this.view.getMiCalculoMargem().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                abrirCalculoMargem();
-            }
-        });
-    }
-
-    private void abrirInclusaoProduto() {
-        try {
-            ProdutoInclusaoEdicao telaInclusao = new ProdutoInclusaoEdicao(view, true);
-            telaInclusao.setVisible(true);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(view, 
-                    "Erro ao abrir a tela de inclusão de produtos: " + e.getMessage(), 
-                    "Erro", 
-                    JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
-    private void abrirBuscaProdutos() {
-        try {
-            BuscaProdutos telaBusca = new BuscaProdutos(view, true);
-            telaBusca.setVisible(true);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(view, 
-                    "Erro ao abrir a tela de busca de produtos: " + e.getMessage(), 
-                    "Erro", 
-                    JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
-    private void abrirCategorias() {
-        try {
-            CategoriaProdutos telaCategorias = new CategoriaProdutos(view, true);
-            telaCategorias.setVisible(true);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(view, 
-                    "Erro ao abrir a tela de categorias: " + e.getMessage(), 
-                    "Erro", 
-                    JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
-    private void abrirCalculoMargem() {
-        try {
-            CalculoMargemLucro telaMargem = new CalculoMargemLucro(view, true);
-            telaMargem.setVisible(true);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(view, 
-                    "Erro ao abrir a tela de cálculo de margem: " + e.getMessage(), 
-                    "Erro", 
-                    JOptionPane.ERROR_MESSAGE);
-        }
+        this.produtos = produtos;
+        view.getMiIncluirProduto().addActionListener(e ->
+            new ProdutoInclusaoEdicaoPresenter(new ProdutoInclusaoEdicao(), produtos, null, null).exibeTela());
+        view.getMiBuscarProdutos().addActionListener(e ->
+            new BuscaProdutosPresenter(new BuscaProdutos(), produtos).exibeTela());
+        view.getMiCategorias().addActionListener(e ->
+            new CategoriaProdutosPresenter(new CategoriaProdutos(), produtos).exibeTela());
+        view.getMiCalculoMargem().addActionListener(e ->
+            new CalculoMargemLucroPresenter(new CalculoMargemLucro(), produtos).exibeTela());
     }
 
     public void exibeTela() {
-        this.view.setLocationRelativeTo(null);
-        this.view.setVisible(true);
+        view.setLocationRelativeTo(null);
+        view.setVisible(true);
     }
 }

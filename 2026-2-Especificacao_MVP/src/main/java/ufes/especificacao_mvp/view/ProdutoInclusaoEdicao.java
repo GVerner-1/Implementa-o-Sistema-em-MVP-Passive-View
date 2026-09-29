@@ -17,6 +17,7 @@ public class ProdutoInclusaoEdicao extends javax.swing.JFrame {
      */
     public ProdutoInclusaoEdicao() {
         initComponents();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -200,6 +201,14 @@ public class ProdutoInclusaoEdicao extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new ProdutoInclusaoEdicao().setVisible(true));
     }
+
+    public javax.swing.JButton getBtnSalvar() { return BtnSalvar; }
+    public javax.swing.JButton getBtnCancelar() { return BtnCancelar; }
+    public javax.swing.JTextField getTxtNome() { return TxtNome; }
+    public javax.swing.JTextField getTxtValor() { return TxtValor; }
+    public javax.swing.JComboBox<String> getCbCategorias() { return CbCategorias; }
+    public javax.swing.JTextField getJTextField3() { return jTextField3; }
+    public javax.swing.JTextField getJTextField4() { return jTextField4; }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCancelar;

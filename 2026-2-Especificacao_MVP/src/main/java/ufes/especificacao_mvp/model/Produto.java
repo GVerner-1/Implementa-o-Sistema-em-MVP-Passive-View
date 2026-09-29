@@ -5,6 +5,7 @@ public class Produto {
     private String nome;
     private double precoCusto;
     private double precoVenda;
+    private Double percentualLucroCalculado;
     private Categoria categoria;
     
     public Produto(int id, String nome, double precoCusto, double precoVenda, Categoria categoria) {
@@ -31,6 +32,10 @@ public class Produto {
         return precoVenda;
     }
 
+    public Double getPercentualLucroCalculado() {
+        return percentualLucroCalculado;
+    }
+
     public Categoria getCategoria() {
         return categoria;
     }
@@ -49,6 +54,10 @@ public class Produto {
 
     public void setPrecoVenda(double precoVenda) {
         this.precoVenda = precoVenda;
+    }
+
+    public void setPercentualLucroCalculado(Double percentualLucroCalculado) {
+        this.percentualLucroCalculado = percentualLucroCalculado;
     }
 
     public void setCategoria(Categoria categoria) {

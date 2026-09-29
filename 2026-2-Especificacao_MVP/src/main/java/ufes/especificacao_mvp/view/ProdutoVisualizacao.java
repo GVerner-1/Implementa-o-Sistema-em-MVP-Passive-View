@@ -17,6 +17,7 @@ public class ProdutoVisualizacao extends javax.swing.JFrame {
      */
     public ProdutoVisualizacao() {
         initComponents();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -203,6 +204,15 @@ public class ProdutoVisualizacao extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new ProdutoVisualizacao().setVisible(true));
     }
+
+    public javax.swing.JButton getJButton1() { return jButton1; }
+    public javax.swing.JButton getJButton2() { return jButton2; }
+    public javax.swing.JButton getJButton3() { return jButton3; }
+    public javax.swing.JTextField getJTextField1() { return jTextField1; }
+    public javax.swing.JTextField getJTextField2() { return jTextField2; }
+    public javax.swing.JTextField getJTextField3() { return jTextField3; }
+    public javax.swing.JTextField getJTextField4() { return jTextField4; }
+    public javax.swing.JComboBox<String> getJComboBox1() { return jComboBox1; }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

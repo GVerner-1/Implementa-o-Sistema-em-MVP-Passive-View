@@ -17,6 +17,7 @@ public class BuscaProdutos extends javax.swing.JFrame {
      */
     public BuscaProdutos() {
         initComponents();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -182,6 +183,14 @@ public class BuscaProdutos extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new BuscaProdutos().setVisible(true));
     }
+
+    public javax.swing.JButton getBtnBuscar() { return BtnBuscar; }
+    public javax.swing.JButton getBtnNovo() { return BtnNovo; }
+    public javax.swing.JButton getBtnVisualizar() { return BtnVisualizar; }
+    public javax.swing.JButton getBtnFechar() { return BtnFechar; }
+    public javax.swing.JTextField getTxtTermoBusca() { return TxtTermoBusca; }
+    public javax.swing.JTable getTabelaProdutos() { return TabelaProdutos; }
+    public javax.swing.JComboBox<String> getJComboBox1() { return jComboBox1; }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnBuscar;

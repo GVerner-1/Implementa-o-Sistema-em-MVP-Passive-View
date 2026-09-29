@@ -16,6 +16,7 @@ public class CalculoMargemLucro extends javax.swing.JFrame {
      */
     public CalculoMargemLucro() {
         initComponents();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -195,6 +196,11 @@ public class CalculoMargemLucro extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new CalculoMargemLucro().setVisible(true));
     }
+
+    public javax.swing.JButton getJButton1() { return jButton1; }
+    public javax.swing.JButton getJButton2() { return jButton2; }
+    public javax.swing.JComboBox<String> getJComboBox1() { return jComboBox1; }
+    public javax.swing.JTable getJTable2() { return jTable2; }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

@@ -17,6 +17,7 @@ public class CategoriaProdutos extends javax.swing.JFrame {
      */
     public CategoriaProdutos() {
         initComponents();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -171,6 +172,17 @@ public class CategoriaProdutos extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new CategoriaProdutos().setVisible(true));
     }
+
+    public javax.swing.JButton getBtnNovo() { return BtnNovo; }
+    public javax.swing.JButton getBtnEditar() { return BtnEditar; }
+    public javax.swing.JButton getBtnExcluir() { return BtnExcluir; }
+    public javax.swing.JButton getBtnSalvar() { return BtnSalvar; }
+    public javax.swing.JButton getBtnCancelar() { return BtnCancelar; }
+    public javax.swing.JButton getBtnFechar() { return BtnFechar; }
+    public javax.swing.JTextField getTxtNomeCategoria() { return TxtNomeCategoria; }
+    public javax.swing.JTextField getTxtPercentualLucro() { return txtPercentualLucro; }
+    public javax.swing.JTable getJTable1() { return jTable1; }
+    public javax.swing.JLabel getLblModo() { return lblModo; }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCancelar;
