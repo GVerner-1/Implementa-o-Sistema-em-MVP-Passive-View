@@ -5,7 +5,7 @@ import ufes.especificacao_mvp.model.HistoricoPreco;
 
 public interface IHistoricoPrecoRepository {
     void salvar(HistoricoPreco historico);
-    List<HistoricoPreco> buscarTodas();
+    public List<HistoricoPreco> buscarTodos();
     void atualizar(HistoricoPreco historico);
     void excluir(HistoricoPreco historico);
 }

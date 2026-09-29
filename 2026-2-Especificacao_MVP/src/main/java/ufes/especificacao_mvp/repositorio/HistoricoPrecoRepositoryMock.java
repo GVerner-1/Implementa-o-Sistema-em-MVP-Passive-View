@@ -15,7 +15,7 @@ public class HistoricoPrecoRepositoryMock implements IHistoricoPrecoRepository{
     }
     
     @Override
-    public List<HistoricoPreco> buscarTodas(){
+    public List<HistoricoPreco> buscarTodos(){
         return new ArrayList<>(historicos);
     }
     
