@@ -1,8 +1,21 @@
 package ufes.especificacao_mvp;
 
+import ufes.especificacao_mvp.repositorio.CategoriaRepositoryMock;
+import ufes.especificacao_mvp.repositorio.HistoricoPrecoRepositoryMock;
+import ufes.especificacao_mvp.repositorio.ICategoriaRepository;
+import ufes.especificacao_mvp.repositorio.IHistoricoPrecoRepository;
+import ufes.especificacao_mvp.repositorio.IProdutoRepository;
+import ufes.especificacao_mvp.repositorio.ProdutoRepositoryMock;
+import ufes.especificacao_mvp.seeder.Seeder;
+
 public class App {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        ICategoriaRepository categoriaRepo = new CategoriaRepositoryMock();
+        IProdutoRepository produtoRepo = new ProdutoRepositoryMock();
+        IHistoricoPrecoRepository historicoRepo = new HistoricoPrecoRepositoryMock();
+
+        Seeder seeder = new Seeder(categoriaRepo, produtoRepo, historicoRepo);
+        seeder.popularBanco();
     }
 }

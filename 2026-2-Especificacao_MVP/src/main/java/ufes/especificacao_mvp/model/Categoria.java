@@ -5,7 +5,8 @@ public class Categoria {
     private String nome;
     private double percentualLucro;
 
-    public Categoria(String nome, double percentualLucro) {
+    public Categoria(int id, String nome, double percentualLucro) {
+        this.id = id;
         this.nome = nome;
         this.percentualLucro = percentualLucro;
     }

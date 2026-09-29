@@ -15,7 +15,7 @@ public class CategoriaRepositoryMock implements ICategoriaRepository{
     }
     
     @Override
-    public List<Categoria> buscarTodas(){
+    public List<Categoria> buscarTodos(){
         return new ArrayList<>(categorias);
     }
     

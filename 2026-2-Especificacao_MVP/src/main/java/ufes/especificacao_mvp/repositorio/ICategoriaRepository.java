@@ -5,7 +5,7 @@ import ufes.especificacao_mvp.model.Categoria;
 
 public interface ICategoriaRepository {
     void salvar(Categoria categoria);
-    List<Categoria> buscarTodas();
+    List<Categoria> buscarTodos();
     void atualizar(Categoria categoria);
     void excluir(Categoria categoria);
 }
