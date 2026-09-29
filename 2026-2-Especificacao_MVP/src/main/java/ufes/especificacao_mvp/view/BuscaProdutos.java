@@ -22,14 +22,14 @@ public class BuscaProdutos extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbNomeProduto = new javax.swing.JComboBox<>();
         txtTermoBusca = new javax.swing.JTextField();
         btnPesquisar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaResultados = new javax.swing.JTable();
-        BtnNovo = new javax.swing.JButton();
-        BtnVisualizar = new javax.swing.JButton();
-        BtnFechar = new javax.swing.JButton();
+        btnNovo = new javax.swing.JButton();
+        btnVisualizar = new javax.swing.JButton();
+        btnFechar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -39,8 +39,8 @@ public class BuscaProdutos extends javax.swing.JFrame {
 
         jLabel1.setText("Busca por");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome do produto", "Categoria" }));
-        jComboBox1.addActionListener(this::jComboBox1ActionPerformed);
+        cbNomeProduto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome do produto", "Categoria" }));
+        cbNomeProduto.addActionListener(this::cbNomeProdutoActionPerformed);
 
         btnPesquisar.setText("Buscar");
 
@@ -52,7 +52,7 @@ public class BuscaProdutos extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cbNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtTermoBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -67,7 +67,7 @@ public class BuscaProdutos extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtTermoBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPesquisar))
                 .addContainerGap(20, Short.MAX_VALUE))
@@ -96,12 +96,12 @@ public class BuscaProdutos extends javax.swing.JFrame {
         tabelaResultados.setShowVerticalLines(true);
         jScrollPane1.setViewportView(tabelaResultados);
 
-        BtnNovo.setText("Novo");
-        BtnNovo.addActionListener(this::BtnNovoActionPerformed);
+        btnNovo.setText("Novo");
+        btnNovo.addActionListener(this::btnNovoActionPerformed);
 
-        BtnVisualizar.setText("Visualizar");
+        btnVisualizar.setText("Visualizar");
 
-        BtnFechar.setText("Fechar");
+        btnFechar.setText("Fechar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -114,11 +114,11 @@ public class BuscaProdutos extends javax.swing.JFrame {
                     .addComponent(jScrollPane1)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(BtnNovo)
+                        .addComponent(btnNovo)
                         .addGap(26, 26, 26)
-                        .addComponent(BtnVisualizar)
+                        .addComponent(btnVisualizar)
                         .addGap(18, 18, 18)
-                        .addComponent(BtnFechar)
+                        .addComponent(btnFechar)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -133,22 +133,22 @@ public class BuscaProdutos extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnNovo)
-                    .addComponent(BtnVisualizar)
-                    .addComponent(BtnFechar))
+                    .addComponent(btnNovo)
+                    .addComponent(btnVisualizar)
+                    .addComponent(btnFechar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void cbNomeProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbNomeProdutoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_cbNomeProdutoActionPerformed
 
-    private void BtnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNovoActionPerformed
+    private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BtnNovoActionPerformed
+    }//GEN-LAST:event_btnNovoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,23 +176,40 @@ public class BuscaProdutos extends javax.swing.JFrame {
     }
     
     public javax.swing.JTextField getTxtTermoBusca() {
-        return txtTermoBusca; // Substitua pelo nome real da sua caixa de texto
+        return txtTermoBusca;
     }
 
     public javax.swing.JButton getBtnPesquisar() {
-        return btnPesquisar; // Substitua pelo botão de pesquisa
+        return btnPesquisar;
     }
 
     public javax.swing.JTable getTabelaResultados() {
-        return tabelaResultados; // Substitua pela tabela (JTable)
+        return tabelaResultados;
     }
 
+    public javax.swing.JButton getBtnFechar() {
+        return btnFechar;
+    }
+    
+    public javax.swing.JButton getBtnVisualizar() {
+        return btnVisualizar;
+    }
+    
+    public javax.swing.JButton getBtnNovo() {
+        return btnNovo;
+    }
+    
+    public javax.swing.JComboBox getCbNomeProduto() {
+        return cbNomeProduto;
+    }
+    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnFechar;
-    private javax.swing.JButton BtnNovo;
-    private javax.swing.JButton BtnVisualizar;
+    private javax.swing.JButton btnFechar;
+    private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnPesquisar;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton btnVisualizar;
+    private javax.swing.JComboBox<String> cbNomeProduto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

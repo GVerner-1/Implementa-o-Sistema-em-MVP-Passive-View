@@ -36,12 +36,12 @@ public class CategoriaProdutos extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtNomeCategoria = new javax.swing.JTextField();
         txtPercentualLucro = new javax.swing.JTextField();
-        BtnNovo = new javax.swing.JButton();
-        BtnEditar = new javax.swing.JButton();
+        btnNovo = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
         btnExcluirCategoria = new javax.swing.JButton();
         btnSalvarCategoria = new javax.swing.JButton();
-        BtnCancelar = new javax.swing.JButton();
-        BtnFechar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        btnFechar = new javax.swing.JButton();
         lblModo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -102,11 +102,11 @@ public class CategoriaProdutos extends javax.swing.JFrame {
         jPanel2.add(txtNomeCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(162, 58, 464, -1));
         jPanel2.add(txtPercentualLucro, new org.netbeans.lib.awtextra.AbsoluteConstraints(162, 98, 139, -1));
 
-        BtnNovo.setText("Novo");
-        jPanel2.add(BtnNovo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, -1, -1));
+        btnNovo.setText("Novo");
+        jPanel2.add(btnNovo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, -1, -1));
 
-        BtnEditar.setText("Editar");
-        jPanel2.add(BtnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, -1, -1));
+        btnEditar.setText("Editar");
+        jPanel2.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, -1, -1));
 
         btnExcluirCategoria.setText("Excluir");
         jPanel2.add(btnExcluirCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, -1, -1));
@@ -114,11 +114,11 @@ public class CategoriaProdutos extends javax.swing.JFrame {
         btnSalvarCategoria.setText("Salvar");
         jPanel2.add(btnSalvarCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, -1, -1));
 
-        BtnCancelar.setText("Cancelar");
-        jPanel2.add(BtnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, -1, -1));
+        btnCancelar.setText("Cancelar");
+        jPanel2.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, -1, -1));
 
-        BtnFechar.setText("Fechar");
-        jPanel2.add(BtnFechar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 150, -1, -1));
+        btnFechar.setText("Fechar");
+        jPanel2.add(btnFechar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 150, -1, -1));
 
         lblModo.setText("Modo: Visualização");
         lblModo.setOpaque(true);
@@ -175,6 +175,10 @@ public class CategoriaProdutos extends javax.swing.JFrame {
     public javax.swing.JTextField getTxtNomeCategoria() {
         return txtNomeCategoria;
     }
+    
+    public javax.swing.JTextField getTxtPercentualLucro() {
+        return txtPercentualLucro;
+    }
 
     public javax.swing.JTable getTabelaCategorias() {
         return tabelaCategorias;
@@ -187,13 +191,28 @@ public class CategoriaProdutos extends javax.swing.JFrame {
     public javax.swing.JButton getBtnExcluirCategoria() {
         return btnExcluirCategoria;
     }
-
+    
+    public javax.swing.JButton getBtnNovo() {
+        return btnNovo;
+    }
+    
+    public javax.swing.JButton getBtnEditar() {
+        return btnEditar;
+    }
+    
+    public javax.swing.JButton getBtnCancelar() {
+        return btnCancelar;
+    }
+    
+    public javax.swing.JButton getBtnFechar() {
+        return btnFechar;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnCancelar;
-    private javax.swing.JButton BtnEditar;
-    private javax.swing.JButton BtnFechar;
-    private javax.swing.JButton BtnNovo;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnExcluirCategoria;
+    private javax.swing.JButton btnFechar;
+    private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnSalvarCategoria;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
