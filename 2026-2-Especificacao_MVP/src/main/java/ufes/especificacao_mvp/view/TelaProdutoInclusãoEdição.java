@@ -44,6 +44,7 @@ public class TelaProdutoInclusãoEdição extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Produto - Inclusão/Edição");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados do produto"));
 
