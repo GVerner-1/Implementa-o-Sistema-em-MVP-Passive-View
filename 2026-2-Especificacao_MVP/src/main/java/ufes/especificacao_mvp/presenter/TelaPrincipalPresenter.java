@@ -19,7 +19,6 @@ public class TelaPrincipalPresenter {
     }
 
     private void initListeners() {
-        // Listener para incluir produtos
         this.view.getMiIncluirProduto().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -27,7 +26,6 @@ public class TelaPrincipalPresenter {
             }
         });
 
-        // Listener para buscar produtos
         this.view.getMiBuscarProdutos().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -35,7 +33,6 @@ public class TelaPrincipalPresenter {
             }
         });
 
-        // Listener para gerenciar categorias
         this.view.getMiCategorias().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -43,7 +40,6 @@ public class TelaPrincipalPresenter {
             }
         });
 
-        // Listener para o cálculo de margem de lucro
         this.view.getMiCalculoMargem().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
