@@ -8,14 +8,14 @@ package ufes.especificacao_mvp.view;
  *
  * @author GVerner
  */
-public class TelaProdutoVisualisacao extends javax.swing.JFrame {
+public class CategoriaProdutos extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TelaProdutoVisualisacao.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CategoriaProdutos.class.getName());
 
     /**
-     * Creates new form TelaProdutoVisualisacao
+     * Creates new form CategoriaProdutos
      */
-    public TelaProdutoVisualisacao() {
+    public CategoriaProdutos() {
         initComponents();
     }
 
@@ -66,7 +66,7 @@ public class TelaProdutoVisualisacao extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new TelaProdutoVisualisacao().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new CategoriaProdutos().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
