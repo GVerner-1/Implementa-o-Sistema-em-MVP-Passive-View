@@ -19,6 +19,10 @@ public class ProdutoService {
         this.historicoRepository = historicoRepository;
     }
 
+    public ProdutoService() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public void calcularPrecoVenda(Produto produto) throws Exception {
         List<HistoricoPreco> historicos = historicoRepository.buscarTodos();
         
