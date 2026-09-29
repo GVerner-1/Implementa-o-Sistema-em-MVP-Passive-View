@@ -46,7 +46,7 @@ public class TelaProduto extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados do Produto\n", null, null, null, null));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados do produto"));
 
         jLabel1.setText("Nome do produto:");
 
