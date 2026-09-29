@@ -17,6 +17,7 @@ public class HistoricoPrecosProduto extends javax.swing.JFrame {
      */
     public HistoricoPrecosProduto() {
         initComponents();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -31,10 +32,10 @@ public class HistoricoPrecosProduto extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtCategoria = new javax.swing.JTextField();
-        txtProduto = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblHistorico = new javax.swing.JTable();
+        jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -56,11 +57,11 @@ public class HistoricoPrecosProduto extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(txtProduto))
+                        .addComponent(jTextField2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCategoria)))
+                        .addComponent(jTextField1)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -69,15 +70,15 @@ public class HistoricoPrecosProduto extends javax.swing.JFrame {
                 .addGap(11, 11, 11)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        tblHistorico.setModel(new javax.swing.table.DefaultTableModel(
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -99,8 +100,10 @@ public class HistoricoPrecosProduto extends javax.swing.JFrame {
                 "Data", "Percentual de lucro (%)", "Preço de venda"
             }
         ));
-        tblHistorico.setShowGrid(true);
-        jScrollPane1.setViewportView(tblHistorico);
+        jTable1.setShowGrid(true);
+        jTable1.setShowHorizontalLines(true);
+        jTable1.setShowVerticalLines(true);
+        jScrollPane1.setViewportView(jTable1);
 
         jButton1.setText("Fechar");
 
@@ -158,18 +161,11 @@ public class HistoricoPrecosProduto extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new HistoricoPrecosProduto().setVisible(true));
     }
-    
-    public javax.swing.JTextField getTxtProduto() {
-        return txtProduto;
-    }
-    
-    public javax.swing.JTextField getTxtCategoria() {
-        return txtCategoria;
-    }
-    
-    public javax.swing.JTable getTblHistorico() {
-        return tblHistorico;
-    }
+
+    public javax.swing.JButton getJButton1() { return jButton1; }
+    public javax.swing.JTextField getJTextField1() { return jTextField1; }
+    public javax.swing.JTextField getJTextField2() { return jTextField2; }
+    public javax.swing.JTable getJTable1() { return jTable1; }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -177,8 +173,8 @@ public class HistoricoPrecosProduto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblHistorico;
-    private javax.swing.JTextField txtCategoria;
-    private javax.swing.JTextField txtProduto;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }

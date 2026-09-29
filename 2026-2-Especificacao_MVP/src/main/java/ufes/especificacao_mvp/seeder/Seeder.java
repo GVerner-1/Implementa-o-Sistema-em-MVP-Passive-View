@@ -7,53 +7,64 @@ import ufes.especificacao_mvp.model.Produto;
 import ufes.especificacao_mvp.repositorio.ICategoriaRepository;
 import ufes.especificacao_mvp.repositorio.IHistoricoPrecoRepository;
 import ufes.especificacao_mvp.repositorio.IProdutoRepository;
+import ufes.especificacao_mvp.servico.ProdutoService;
 
 public class Seeder {
+    private final ICategoriaRepository categorias;
+    private final IProdutoRepository produtos;
+    private final IHistoricoPrecoRepository historicos;
 
-    private ICategoriaRepository categoriaRepository;
-    private IProdutoRepository produtoRepository;
-    private IHistoricoPrecoRepository historicoRepository;
-
-    public Seeder(ICategoriaRepository categoriaRepository, 
-                  IProdutoRepository produtoRepository, 
-                  IHistoricoPrecoRepository historicoRepository) {
-        this.categoriaRepository = categoriaRepository;
-        this.produtoRepository = produtoRepository;
-        this.historicoRepository = historicoRepository;
+    public Seeder(ICategoriaRepository categorias, IProdutoRepository produtos, IHistoricoPrecoRepository historicos) {
+        this.categorias = categorias;
+        this.produtos = produtos;
+        this.historicos = historicos;
     }
 
     public void popularBanco() {
-        try {
-            if (!categoriaRepository.buscarTodos().isEmpty()) {
-                return;
-            }
+        if (!categorias.buscarTodos().isEmpty()) return;
+        Categoria educacao = categoria("Educação", 25);
+        Categoria papelaria = categoria("Papelaria", 30);
+        Categoria alimentacao = categoria("Alimentação", 22);
+        Categoria lazer = categoria("Lazer", 35);
+        Categoria entretenimento = categoria("Entretenimento", 40);
+        Categoria higiene = categoria("Higiene", 28);
+        Categoria limpeza = categoria("Limpeza", 25);
 
-            Categoria catEletronicos = new Categoria(1, "Eletrônicos", 25.0);
-            Categoria catAlimentos = new Categoria(2, "Alimentos", 15.0);
-            Categoria catVestuario = new Categoria(3, "Vestuário", 50.0);
+        produto("Livro didático", 45, educacao);
+        produto("Livro paradidático", 30, educacao);
+        produto("Mochila escolar", 70, educacao);
+        produto("Caderno universitário", 16, papelaria);
+        produto("Lápis grafite HB", 1.20, papelaria);
+        produto("Caneta esferográfica azul", 2.20, papelaria);
+        produto("Borracha branca", 1, papelaria);
+        produto("Apontador com depósito", 3.50, papelaria);
+        produto("Jogo de tabuleiro", 55, lazer);
+        produto("Bola recreativa", 40, lazer);
+        produto("Quebra-cabeça 500 peças", 35, lazer);
+        produto("Fone de ouvido", 48, entretenimento);
+        produto("Caixa de som portátil", 80, entretenimento);
+        produto("Revista de passatempos", 12, entretenimento);
+        produto("Biscoito integral", 5.50, alimentacao);
+        produto("Suco de uva 1 L", 9, alimentacao);
+        produto("Barra de cereal", 3.20, alimentacao);
+        produto("Sabonete", 2.80, higiene);
+        produto("Creme dental", 5.50, higiene);
+        produto("Detergente líquido", 2.60, limpeza);
+        produto("Esponja multiuso", 1.70, limpeza);
+    }
 
-            categoriaRepository.salvar(catEletronicos);
-            categoriaRepository.salvar(catAlimentos);
-            categoriaRepository.salvar(catVestuario);
+    private Categoria categoria(String nome, double margem) {
+        Categoria c = new Categoria(0, nome, margem);
+        categorias.salvar(c);
+        return c;
+    }
 
-            Produto p1 = new Produto(1, "Smartphone", 1000.0, 1250.0, catEletronicos);
-            Produto p2 = new Produto(2, "Arroz 5kg", 20.0, 23.0, catAlimentos);
-            Produto p3 = new Produto(3, "Camiseta", 30.0, 45.0, catVestuario);
-
-            produtoRepository.salvar(p1);
-            produtoRepository.salvar(p2);
-            produtoRepository.salvar(p3);
-
-            LocalDate dataAntiga = LocalDate.now().minusDays(15);
-            
-            historicoRepository.salvar(new HistoricoPreco(dataAntiga, 1250.0, p1));
-            historicoRepository.salvar(new HistoricoPreco(dataAntiga, 23.0, p2));
-            historicoRepository.salvar(new HistoricoPreco(dataAntiga, 45.0, p3));
-
-            System.out.println("Seeder executado com sucesso: Dados iniciais carregados!");
-
-        } catch (Exception e) {
-            System.err.println("Erro ao executar o Seeder: " + e.getMessage());
-        }
+    private void produto(String nome, double custo, Categoria categoria) {
+        double margem = categoria.getPercentualLucro();
+        double venda = ProdutoService.arredondar(custo * (1 + margem / 100.0));
+        Produto p = new Produto(0, nome, custo, venda, categoria);
+        p.setPercentualLucroCalculado(margem);
+        produtos.salvar(p);
+        historicos.salvar(new HistoricoPreco(LocalDate.now().minusDays(10), margem, venda, p));
     }
 }

@@ -17,6 +17,7 @@ public class CategoriaProdutos extends javax.swing.JFrame {
      */
     public CategoriaProdutos() {
         initComponents();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -30,18 +31,18 @@ public class CategoriaProdutos extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabelaCategorias = new javax.swing.JTable();
+        jTable1 = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtNomeCategoria = new javax.swing.JTextField();
+        TxtNomeCategoria = new javax.swing.JTextField();
         txtPercentualLucro = new javax.swing.JTextField();
-        btnNovo = new javax.swing.JButton();
-        btnEditar = new javax.swing.JButton();
-        btnExcluirCategoria = new javax.swing.JButton();
-        btnSalvarCategoria = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
-        btnFechar = new javax.swing.JButton();
+        BtnNovo = new javax.swing.JButton();
+        BtnEditar = new javax.swing.JButton();
+        BtnExcluir = new javax.swing.JButton();
+        BtnSalvar = new javax.swing.JButton();
+        BtnCancelar = new javax.swing.JButton();
+        BtnFechar = new javax.swing.JButton();
         lblModo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -49,7 +50,7 @@ public class CategoriaProdutos extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Categorias Cadastradas"));
 
-        tabelaCategorias.setModel(new javax.swing.table.DefaultTableModel(
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -70,9 +71,9 @@ public class CategoriaProdutos extends javax.swing.JFrame {
                 "Categoria", "Percentual de lucro (%)"
             }
         ));
-        tabelaCategorias.setShowHorizontalLines(true);
-        tabelaCategorias.setShowVerticalLines(true);
-        jScrollPane1.setViewportView(tabelaCategorias);
+        jTable1.setShowHorizontalLines(true);
+        jTable1.setShowVerticalLines(true);
+        jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -99,26 +100,26 @@ public class CategoriaProdutos extends javax.swing.JFrame {
 
         jLabel2.setText(" Percentual de lucro (%):");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
-        jPanel2.add(txtNomeCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(162, 58, 464, -1));
+        jPanel2.add(TxtNomeCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(162, 58, 464, -1));
         jPanel2.add(txtPercentualLucro, new org.netbeans.lib.awtextra.AbsoluteConstraints(162, 98, 139, -1));
 
-        btnNovo.setText("Novo");
-        jPanel2.add(btnNovo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, -1, -1));
+        BtnNovo.setText("Novo");
+        jPanel2.add(BtnNovo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, -1, -1));
 
-        btnEditar.setText("Editar");
-        jPanel2.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, -1, -1));
+        BtnEditar.setText("Editar");
+        jPanel2.add(BtnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, -1, -1));
 
-        btnExcluirCategoria.setText("Excluir");
-        jPanel2.add(btnExcluirCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, -1, -1));
+        BtnExcluir.setText("Excluir");
+        jPanel2.add(BtnExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, -1, -1));
 
-        btnSalvarCategoria.setText("Salvar");
-        jPanel2.add(btnSalvarCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, -1, -1));
+        BtnSalvar.setText("Salvar");
+        jPanel2.add(BtnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, -1, -1));
 
-        btnCancelar.setText("Cancelar");
-        jPanel2.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, -1, -1));
+        BtnCancelar.setText("Cancelar");
+        jPanel2.add(BtnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, -1, -1));
 
-        btnFechar.setText("Fechar");
-        jPanel2.add(btnFechar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 150, -1, -1));
+        BtnFechar.setText("Fechar");
+        jPanel2.add(BtnFechar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 150, -1, -1));
 
         lblModo.setText("Modo: Visualização");
         lblModo.setOpaque(true);
@@ -171,57 +172,33 @@ public class CategoriaProdutos extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new CategoriaProdutos().setVisible(true));
     }
-    
-    public javax.swing.JTextField getTxtNomeCategoria() {
-        return txtNomeCategoria;
-    }
-    
-    public javax.swing.JTextField getTxtPercentualLucro() {
-        return txtPercentualLucro;
-    }
 
-    public javax.swing.JTable getTabelaCategorias() {
-        return tabelaCategorias;
-    }
+    public javax.swing.JButton getBtnNovo() { return BtnNovo; }
+    public javax.swing.JButton getBtnEditar() { return BtnEditar; }
+    public javax.swing.JButton getBtnExcluir() { return BtnExcluir; }
+    public javax.swing.JButton getBtnSalvar() { return BtnSalvar; }
+    public javax.swing.JButton getBtnCancelar() { return BtnCancelar; }
+    public javax.swing.JButton getBtnFechar() { return BtnFechar; }
+    public javax.swing.JTextField getTxtNomeCategoria() { return TxtNomeCategoria; }
+    public javax.swing.JTextField getTxtPercentualLucro() { return txtPercentualLucro; }
+    public javax.swing.JTable getJTable1() { return jTable1; }
+    public javax.swing.JLabel getLblModo() { return lblModo; }
 
-    public javax.swing.JButton getBtnSalvarCategoria() {
-        return btnSalvarCategoria;
-    }
-
-    public javax.swing.JButton getBtnExcluirCategoria() {
-        return btnExcluirCategoria;
-    }
-    
-    public javax.swing.JButton getBtnNovo() {
-        return btnNovo;
-    }
-    
-    public javax.swing.JButton getBtnEditar() {
-        return btnEditar;
-    }
-    
-    public javax.swing.JButton getBtnCancelar() {
-        return btnCancelar;
-    }
-    
-    public javax.swing.JButton getBtnFechar() {
-        return btnFechar;
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnEditar;
-    private javax.swing.JButton btnExcluirCategoria;
-    private javax.swing.JButton btnFechar;
-    private javax.swing.JButton btnNovo;
-    private javax.swing.JButton btnSalvarCategoria;
+    private javax.swing.JButton BtnCancelar;
+    private javax.swing.JButton BtnEditar;
+    private javax.swing.JButton BtnExcluir;
+    private javax.swing.JButton BtnFechar;
+    private javax.swing.JButton BtnNovo;
+    private javax.swing.JButton BtnSalvar;
+    private javax.swing.JTextField TxtNomeCategoria;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblModo;
-    private javax.swing.JTable tabelaCategorias;
-    private javax.swing.JTextField txtNomeCategoria;
     private javax.swing.JTextField txtPercentualLucro;
     // End of variables declaration//GEN-END:variables
 }

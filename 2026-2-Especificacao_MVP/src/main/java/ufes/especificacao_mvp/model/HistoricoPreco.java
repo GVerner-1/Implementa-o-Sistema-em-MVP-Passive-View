@@ -6,10 +6,16 @@ public class HistoricoPreco {
     private int id;
     private LocalDate data;
     private double valorVenda;
+    private double percentualLucro;
     private Produto produto;
 
     public HistoricoPreco( LocalDate data, double valorVenda, Produto produto) {
+        this(data, produto.getCategoria().getPercentualLucro(), valorVenda, produto);
+    }
+
+    public HistoricoPreco(LocalDate data, double percentualLucro, double valorVenda, Produto produto) {
         this.data = data;
+        this.percentualLucro = percentualLucro;
         this.valorVenda = valorVenda;
         this.produto = produto;
     }
@@ -28,6 +34,10 @@ public class HistoricoPreco {
 
     public double getValorVenda() {
         return valorVenda;
+    }
+
+    public double getPercentualLucro() {
+        return percentualLucro;
     }
 
     public void setData(LocalDate data) {

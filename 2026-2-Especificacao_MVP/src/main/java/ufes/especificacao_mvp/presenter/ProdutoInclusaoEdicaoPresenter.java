@@ -1,74 +1,63 @@
 package ufes.especificacao_mvp.presenter;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.math.BigDecimal;
 import javax.swing.JOptionPane;
 import ufes.especificacao_mvp.model.Categoria;
 import ufes.especificacao_mvp.model.Produto;
-import ufes.especificacao_mvp.repositorio.CategoriaRepositoryMock;
-import ufes.especificacao_mvp.repositorio.ICategoriaRepository;
 import ufes.especificacao_mvp.servico.ProdutoService;
 import ufes.especificacao_mvp.view.ProdutoInclusaoEdicao;
 
 public class ProdutoInclusaoEdicaoPresenter {
-    
     private final ProdutoInclusaoEdicao view;
-    private final ProdutoService produtoService;
-    private final ICategoriaRepository categoriaRepository;
+    private final ProdutoService produtos;
+    private final Produto editando;
+    private final Runnable aposSalvar;
 
-    public ProdutoInclusaoEdicaoPresenter(ProdutoInclusaoEdicao view) {
+    public ProdutoInclusaoEdicaoPresenter(ProdutoInclusaoEdicao view, ProdutoService produtos,
+            Produto editando, Runnable aposSalvar) {
         this.view = view;
-        this.produtoService = new ProdutoService();
-        this.categoriaRepository = CategoriaRepositoryMock.getInstance();
-        
-        this.carregarCategorias();
-        this.initListeners();
-    }
-
-    private void carregarCategorias() {
-        try {
-            view.getCbCategorias().removeAllItems();
-            for (Categoria categoria : categoriaRepository.listar()) {
-                view.getCbCategorias().addItem(categoria);
+        this.produtos = produtos;
+        this.editando = editando;
+        this.aposSalvar = aposSalvar;
+        view.getJTextField3().setEditable(false);
+        view.getJTextField4().setEditable(false);
+        view.getCbCategorias().removeAllItems();
+        produtos.buscarCategorias().forEach(c -> view.getCbCategorias().addItem(c.getNome()));
+        view.getCbCategorias().setSelectedIndex(-1);
+        if (editando != null) {
+            view.setTitle("Produto - Edição");
+            view.getTxtNome().setText(editando.getNome());
+            view.getTxtValor().setText(TelaPrincipalPresenter.numero(editando.getPrecoCusto()));
+            view.getCbCategorias().setSelectedItem(editando.getCategoria().getNome());
+            if (editando.getPercentualLucroCalculado() != null) {
+                view.getJTextField3().setText(TelaPrincipalPresenter.numero(editando.getPercentualLucroCalculado()));
+                view.getJTextField4().setText(TelaPrincipalPresenter.numero(editando.getPrecoVenda()));
             }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(view, "Erro ao carregar categorias: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
+        view.getBtnSalvar().addActionListener(e -> salvar());
+        view.getBtnCancelar().addActionListener(e -> view.dispose());
     }
 
-    private void initListeners() {
-        this.view.getBtnSalvar().addActionListener(new ActionListener() {
-            @org.jetbrains.annotations.NotNull
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                salvarProduto();
-            }
-        });
-
-        this.view.getBtnCancelar().addActionListener(e -> view.dispose());
-    }
-
-    private void salvarProduto() {
+    private void salvar() {
         try {
             String nome = view.getTxtNome().getText();
-            BigDecimal valor = new BigDecimal(view.getTxtValor().getText());
-            Categoria categoria = (Categoria) view.getCbCategorias().getSelectedItem();
-
-            Produto produto = new Produto(nome, valor, categoria);
-            produtoService.incluir(produto);
-
-            JOptionPane.showMessageDialog(view, "Produto salvo com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            double custo = TelaPrincipalPresenter.lerNumero(view.getTxtValor().getText(), "preço de custo");
+            Categoria categoria = produtos.buscarCategorias().stream()
+                .filter(c -> c.getNome().equals(view.getCbCategorias().getSelectedItem()))
+                .findFirst().orElse(null);
+            if (editando == null) produtos.incluir(nome, custo, categoria);
+            else produtos.atualizar(editando, nome, custo, categoria);
+            JOptionPane.showMessageDialog(view, "Produto salvo com sucesso.");
             view.dispose();
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(view, "O valor do produto deve ser um número válido.", "Erro de Validação", JOptionPane.WARNING_MESSAGE);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(view, "Erro ao salvar produto: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            if (aposSalvar != null) aposSalvar.run();
+        } catch (IllegalArgumentException ex) {
+            JOptionPane.showMessageDialog(view, ex.getMessage(), "Dados inválidos", JOptionPane.WARNING_MESSAGE);
+        } catch (RuntimeException ex) {
+            JOptionPane.showMessageDialog(view, "Erro ao salvar produto: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     public void exibeTela() {
-        this.view.setLocationRelativeTo(null);
-        this.view.setVisible(true);
+        view.setLocationRelativeTo(null);
+        view.setVisible(true);
     }
 }
