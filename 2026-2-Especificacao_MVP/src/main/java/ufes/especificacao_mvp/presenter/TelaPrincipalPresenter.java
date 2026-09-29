@@ -3,10 +3,6 @@ package ufes.especificacao_mvp.presenter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
-import ufes.especificacao_mvp.repositorio.ICategoriaRepository;
-import ufes.especificacao_mvp.repositorio.IHistoricoPrecoRepository;
-import ufes.especificacao_mvp.repositorio.IProdutoRepository;
-import ufes.especificacao_mvp.servico.ProdutoService;
 import ufes.especificacao_mvp.view.BuscaProdutos;
 import ufes.especificacao_mvp.view.CalculoMargemLucro;
 import ufes.especificacao_mvp.view.CategoriaProdutos;
@@ -14,94 +10,94 @@ import ufes.especificacao_mvp.view.ProdutoInclusaoEdicao;
 import ufes.especificacao_mvp.view.TelaPrincipal;
 
 public class TelaPrincipalPresenter {
-
+    
     private final TelaPrincipal view;
-    private final ProdutoService produtoService;
-    private final IProdutoRepository produtoRepository;
-    private final ICategoriaRepository categoriaRepository;
-    private final IHistoricoPrecoRepository historicoRepository;
 
-    public TelaPrincipalPresenter(TelaPrincipal view, 
-                                  ProdutoService produtoService, 
-                                  IProdutoRepository produtoRepository, 
-                                  ICategoriaRepository categoriaRepository, 
-                                  IHistoricoPrecoRepository historicoRepository) {
+    public TelaPrincipalPresenter(TelaPrincipal view) {
         this.view = view;
-        this.produtoService = produtoService;
-        this.produtoRepository = produtoRepository;
-        this.categoriaRepository = categoriaRepository;
-        this.historicoRepository = historicoRepository;
-
         this.initListeners();
-        this.view.setVisible(true);
     }
 
     private void initListeners() {
-        view.getMiIncluirProduto().addActionListener(new ActionListener() {
+        this.view.getMiIncluirProduto().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                abrirTelaInclusaoProduto();
+                abrirInclusaoProduto();
             }
         });
 
-        view.getMiBuscarProdutos().addActionListener(new ActionListener() {
+        this.view.getMiBuscarProdutos().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                abrirTelaBuscaProdutos();
+                abrirBuscaProdutos();
             }
         });
 
-        view.getMiCategorias().addActionListener(new ActionListener() {
+        this.view.getMiCategorias().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                abrirTelaCategorias();
+                abrirCategorias();
             }
         });
 
-        view.getMiCalculoMargem().addActionListener(new ActionListener() {
+        this.view.getMiCalculoMargem().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                abrirTelaCalculoMargem();
+                abrirCalculoMargem();
             }
         });
     }
 
-    private void abrirTelaInclusaoProduto() {
+    private void abrirInclusaoProduto() {
         try {
-            ProdutoInclusaoEdicao inclusaoView = new ProdutoInclusaoEdicao();
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(view, "Erro ao abrir inclusão de produtos: " + ex.getMessage(), 
-                    "Erro", JOptionPane.ERROR_MESSAGE);
+            ProdutoInclusaoEdicao telaInclusao = new ProdutoInclusaoEdicao(view, true);
+            telaInclusao.setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(view, 
+                    "Erro ao abrir a tela de inclusão de produtos: " + e.getMessage(), 
+                    "Erro", 
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    private void abrirTelaBuscaProdutos() {
+    private void abrirBuscaProdutos() {
         try {
-            BuscaProdutos buscaView = new BuscaProdutos();
-            new ProdutoPresenter(buscaView, produtoService, produtoRepository, categoriaRepository);
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(view, "Erro ao abrir busca de produtos: " + ex.getMessage(), 
-                    "Erro", JOptionPane.ERROR_MESSAGE);
+            BuscaProdutos telaBusca = new BuscaProdutos(view, true);
+            telaBusca.setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(view, 
+                    "Erro ao abrir a tela de busca de produtos: " + e.getMessage(), 
+                    "Erro", 
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    private void abrirTelaCategorias() {
+    private void abrirCategorias() {
         try {
-            CategoriaProdutos categoriaView = new CategoriaProdutos();
-            new CategoriaPresenter(categoriaView, categoriaRepository);
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(view, "Erro ao abrir categorias: " + ex.getMessage(), 
-                    "Erro", JOptionPane.ERROR_MESSAGE);
+            CategoriaProdutos telaCategorias = new CategoriaProdutos(view, true);
+            telaCategorias.setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(view, 
+                    "Erro ao abrir a tela de categorias: " + e.getMessage(), 
+                    "Erro", 
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    private void abrirTelaCalculoMargem() {
+    private void abrirCalculoMargem() {
         try {
-            CalculoMargemLucro calculoView = new CalculoMargemLucro();
-            new CalculoMargemLucroPresenter(calculoView, produtoService);
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(view, "Erro ao abrir cálculo de margem: " + ex.getMessage(), 
-                    "Erro", JOptionPane.ERROR_MESSAGE);
+            CalculoMargemLucro telaMargem = new CalculoMargemLucro(view, true);
+            telaMargem.setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(view, 
+                    "Erro ao abrir a tela de cálculo de margem: " + e.getMessage(), 
+                    "Erro", 
+                    JOptionPane.ERROR_MESSAGE);
         }
+    }
+
+    public void exibeTela() {
+        this.view.setLocationRelativeTo(null);
+        this.view.setVisible(true);
     }
 }
